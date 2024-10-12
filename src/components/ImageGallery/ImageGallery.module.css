@@ -1,14 +1,13 @@
 .container {
-    display: flex; /* Використовуємо flexbox для гнучкого розміщення */
-    flex-wrap: wrap; /* Дозволяє обгортати елементи на новий рядок */
-    gap: 16px; /* Проміжок між картками */
-    list-style: none; /* Убираємо стандартні маркери списку */
-    padding: 0; /* Відступи */
-    margin: 0; /* Відступи */
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  gap: 10px;
+  list-style-type: none;
+}
+
+.wrap {
+  width: calc((100% - 40px) / 3)
   
-  .wrap {
-    flex: 1 1 calc(33.333% - 16px); /* Картки займають 1/3 ширини з відступами */
-    max-width: calc(33.333% - 16px); /* Максимальна ширина для карток */
-  }
-  
+}
