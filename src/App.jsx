@@ -13,10 +13,7 @@ export default function App() {
   const [query, setQuery] = useState ("");
   const onHandleSubmit = (value) =>{
     setQuery(value);
-    console.log(value);
-    
   }
-console.log(query);
 
 return (
   <SearchBar onSubmit={onHandleSubmit}/>

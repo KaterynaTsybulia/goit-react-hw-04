@@ -23,8 +23,8 @@ const handleSubmit = (evt) => {
     <form className={css.wraper} onSubmit={handleSubmit}>
       <input className={css.input}
         type="text"
-        autocomplete="off"
-        autofocus
+        autoComplete="off"
+        autoFocus
         placeholder="Search images and photos"
         value={query}
         onChange={handleChange}
