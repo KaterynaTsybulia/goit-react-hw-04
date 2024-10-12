@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: center; /* Центрує кнопку */
+    margin: 20px 0; /* Відступи зверху та знизу */
+  }
+  
+  .loadMoreBtn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .loadMoreBtn:hover:not(:disabled) {
+    background-color: #0056b3; /* Темніший колір при наведенні */
+  }
+  
+  .loadMoreBtn:disabled {
+    background-color: #ccc; /* Світліший колір для неактивної кнопки */
+    cursor: not-allowed; /* Змінює курсор на заборонений */
+  }
+  
