@@ -1,6 +1,6 @@
 .loaderContainer {
     display: flex;
-    justify-content: center; /* Центрує спіннер горизонтально */
-    align-items: center; /* Центрує спіннер вертикально */
-    height: 100vh; /* Займає всю висоту вікна, якщо потрібно */
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
 }

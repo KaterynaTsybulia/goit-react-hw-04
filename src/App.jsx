@@ -5,8 +5,10 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import Loader from './components/Loader/Loader';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
-// import ImageModal from './components/ImageModal/ImageModal';
-// import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
+import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
+import ImageModal from './components/ImageModal/ImageModal';
+
+
 
 
 export default function App() {
@@ -17,6 +19,8 @@ export default function App() {
   const [error, setEroor] = useState(null);
   const [isEmpty,setIsEmpty] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
 
   useEffect (() => {
@@ -26,7 +30,7 @@ export default function App() {
     const fetchData = async () => {
     setIsLoading(true);
     try {
-      const {total, total_pages, results} = await getPhotos(query, page);
+      const {total_pages, results} = await getPhotos(query, page);
       if(!results.length) {
         return setIsEmpty(true);
       }
@@ -51,19 +55,30 @@ fetchData();
     setIsVisible(false);
   }
   
-  const onLoadMore = 
+  const onLoadMore = () => {
+    setPage(prevPage => prevPage + 1);
+  }
+
+  const openModal = (imageData) => {
+    setSelectedImage(imageData);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedImage(null);
+  };
 
 return (
   <>
   <SearchBar onSubmit={onHandleSubmit}/>
-  {images.length > 0 && <ImageGallery images={images}   />}
-  {/* <ImageModal
+  {images.length > 0 && <ImageGallery images={images}  onImageClick={openModal} />}
+  <ImageModal
     isOpen={isModalOpen}
     onRequestClose={closeModal}
     imageData={selectedImage}
-  /> */}
-  {/* {isVisible && images.length > 0 && <LoadMoreBtn onClick={onLoadMore} disable={isLoading} />} */}
-  
+  />
+  {isVisible && images.length > 0 && <LoadMoreBtn onClick={onLoadMore} disable={isLoading}>{isLoading ? "loading" : "LoadMore" }</LoadMoreBtn>}
   {isLoading && <Loader isLoading={isLoading} />}
   {error && <ErrorMessage />}
 </>
