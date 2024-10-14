@@ -40,3 +40,11 @@
 .read-the-docs {
   color: #888;
 }
+
+.no-results {
+  font-size: 20px; 
+  color: #bf4342; 
+  text-align: center; 
+  margin: 50px 0; 
+  font-weight: bold; 
+}

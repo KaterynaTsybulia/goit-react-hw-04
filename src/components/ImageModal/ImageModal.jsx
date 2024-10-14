@@ -4,19 +4,6 @@ import css from './ImageModal.module.css';
 
 Modal.setAppElement("#root");
 
-const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      overlad: '',
-    },
-  };
-
-
 export default function ImageModal({ isOpen, onRequestClose, imageData }) {
     if(!imageData) return null;
 
@@ -26,10 +13,11 @@ export default function ImageModal({ isOpen, onRequestClose, imageData }) {
             <Modal
                 isOpen={isOpen}
                 onRequestClose={onRequestClose}
-                style={customStyles}
                 contentLabel="Example Modal"
+                className={css.modal}
+                overlayClassName={css.overlay}
             >
-            <div>
+            <div className={css.content}>
                 <img  src={regular} alt={alt_description} className={css.image} />
                 <p>
                     <strong>Likes:</strong> {likes}

@@ -8,7 +8,7 @@ import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import ImageModal from './components/ImageModal/ImageModal';
 
-
+import './App.css';
 
 
 export default function App() {
@@ -16,7 +16,7 @@ export default function App() {
   const [page, setPage] = useState (1);
   const [images, setImages] = useState ([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setEroor] = useState(null);
+  const [error, setError] = useState(null);
   const [isEmpty,setIsEmpty] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,7 +37,7 @@ export default function App() {
       setImages(prevImages => [...prevImages, ...results]);
       setIsVisible(page < total_pages);
     } catch (error) {
-      setEroor(error);
+      setError(error);
     } finally {
       setIsLoading(false);
     }
@@ -50,7 +50,7 @@ fetchData();
     setQuery(value);
     setImages([]);
     setPage(1);
-    setEroor(null);
+    setError(null);
     setIsEmpty(false);
     setIsVisible(false);
   }
@@ -72,15 +72,16 @@ fetchData();
 return (
   <>
   <SearchBar onSubmit={onHandleSubmit}/>
+  {isEmpty && <p className="no-results">No results found</p>}
   {images.length > 0 && <ImageGallery images={images}  onImageClick={openModal} />}
   <ImageModal
     isOpen={isModalOpen}
     onRequestClose={closeModal}
     imageData={selectedImage}
   />
-  {isVisible && images.length > 0 && <LoadMoreBtn onClick={onLoadMore} disable={isLoading}>{isLoading ? "loading" : "LoadMore" }</LoadMoreBtn>}
+  {isVisible && images.length > 0 && <LoadMoreBtn onClick={onLoadMore} disabled={isLoading}>{isLoading ? "loading" : "LoadMore" }</LoadMoreBtn>}
   {isLoading && <Loader isLoading={isLoading} />}
-  {error && <ErrorMessage />}
+  {error && <ErrorMessage message={error} />}
 </>
 )
 }

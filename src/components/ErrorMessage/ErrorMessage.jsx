@@ -1,6 +1,5 @@
-// import React from 'react';
-// import './ErrorMessage.module.css'; // Приклад стилізації
+import css from "./ErrorMessage.module.css";
 
-export default function ErrorMessage() {
-
-}
+    export default function ErrorMessage({ message }) {
+        return <div className={css.error}>{message}</div>;
+    }

@@ -21,6 +21,7 @@ const handleSubmit = (evt) => {
   return (
     <header className={css.container}>
     <form className={css.wraper} onSubmit={handleSubmit}>
+      <button className={css.button} type="submit"><IoSearchOutline/></button>
       <input className={css.input}
         type="text"
         autoComplete="off"
@@ -29,7 +30,7 @@ const handleSubmit = (evt) => {
         value={query}
         onChange={handleChange}
       />
-      <button className={css.button} type="submit"><IoSearchOutline /> Search </button>
+      
     </form>
     <Toaster position="top-right"/>
   </header>

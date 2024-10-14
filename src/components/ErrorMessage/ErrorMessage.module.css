@@ -1,5 +1,7 @@
-.error-message {
-    color: red;
-    font-weight: bold;
+.error {
     text-align: center;
-}
+    color: red;
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
